@@ -20,7 +20,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="SnapCut AI" className="h-10 w-auto max-h-10" />
           <span className="font-display text-xl font-bold">
-            Goku<span className="gradient-brand-text">Cut</span> AI
+            Snap<span className="gradient-brand-text">Cut</span> AI
           </span>
         </Link>
 
