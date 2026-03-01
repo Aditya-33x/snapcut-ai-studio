@@ -15,7 +15,7 @@ export default function FeaturesSection() {
     <section className="bg-card py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-3xl font-bold">
-          Why Choose <span className="gradient-brand-text">SnapCut AI</span>
+          Why Choose <span className="gradient-brand-text">GokuCut AI</span>
         </h2>
         <p className="mx-auto mt-3 max-w-lg text-center text-muted-foreground">
           Built for speed, privacy, and professional quality.

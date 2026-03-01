@@ -10,7 +10,7 @@ export default function CTASection() {
             Ready to Remove Backgrounds?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-primary-foreground/80">
-            Join thousands of creators using SnapCut AI. Start for free — no credit card required.
+            Join thousands of creators using GokuCut AI. Start for free — no credit card required.
           </p>
           <Link to="/register">
             <Button

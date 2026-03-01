@@ -18,7 +18,7 @@ export default function Privacy() {
           <h2 className="text-lg font-semibold text-foreground">4. Security</h2>
           <p>We use industry-standard encryption and security practices to protect your data.</p>
           <h2 className="text-lg font-semibold text-foreground">5. Contact</h2>
-          <p>For privacy concerns, contact us at support@snapcutai.com.</p>
+          <p>For privacy concerns, contact us at support@GokuCutai.com.</p>
         </div>
       </div>
       <Footer />

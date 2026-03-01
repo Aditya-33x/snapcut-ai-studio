@@ -18,9 +18,9 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="SnapCut AI" className="h-9 w-9" />
+          <img src={logo} alt="GokuCut AI" className="h-10 w-auto max-h-10" />
           <span className="font-display text-xl font-bold">
-            Snap<span className="gradient-brand-text">Cut</span> AI
+            Goku<span className="gradient-brand-text">Cut</span> AI
           </span>
         </Link>
 
@@ -30,9 +30,8 @@ export default function Navbar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === item.path ? "text-primary" : "text-muted-foreground"
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === item.path ? "text-primary" : "text-muted-foreground"
+                }`}
             >
               {item.label}
             </Link>

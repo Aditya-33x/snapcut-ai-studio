@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 const WEBHOOK_URL = "https://adi33x.app.n8n.cloud/webhook/remove-background";
-const STORAGE_KEY = "snapcut_history";
+const STORAGE_KEY = "GokuCut_history";
 
 interface HistoryItem {
   id: string;

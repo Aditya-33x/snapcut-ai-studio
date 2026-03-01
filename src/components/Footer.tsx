@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <Link to="/" className="flex items-center gap-2">
-              <img src={logo} alt="SnapCut AI" className="h-8 w-8" />
-              <span className="font-display text-lg font-bold">SnapCut AI</span>
+              <img src={logo} alt="GokuCut AI" className="h-8 w-auto max-h-8" />
+              <span className="font-display text-lg font-bold">GokuCut AI</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">
               One-click AI background removal for everyone.
@@ -33,12 +33,12 @@ export default function Footer() {
           <div>
             <h4 className="mb-3 text-sm font-semibold">Connect</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="mailto:support@snapcutai.com" className="hover:text-primary">support@snapcutai.com</a></li>
+              <li><a href="mailto:support@gokucutai.com" className="hover:text-primary">support@gokucutai.com</a></li>
             </ul>
           </div>
         </div>
         <div className="mt-10 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} SnapCut AI. All rights reserved.
+          © {new Date().getFullYear()} GokuCut AI. All rights reserved.
         </div>
       </div>
     </footer>
