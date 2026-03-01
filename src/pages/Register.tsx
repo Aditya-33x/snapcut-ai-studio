@@ -20,8 +20,8 @@ export default function Register() {
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center gap-2">
-            <img src={logo} alt="GokuCut AI" className="h-10 w-10" />
-            <span className="font-display text-2xl font-bold">GokuCut AI</span>
+            <img src={logo} alt="SnapCut AI" className="h-10 w-10" />
+            <span className="font-display text-2xl font-bold">SnapCut AI</span>
           </Link>
           <p className="mt-2 text-sm text-muted-foreground">Create your free account</p>
         </div>
