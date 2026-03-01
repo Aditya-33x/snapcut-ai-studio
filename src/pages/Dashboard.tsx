@@ -124,17 +124,49 @@ export default function Dashboard() {
         throw new Error(`Server error: ${response.status} ${response.statusText}`);
       }
 
-      // n8n webhook returns JSON: { url: "<secure_url>" }
-      const data = await response.json();
+      // Parse response — log raw data for debugging
+      const responseText = await response.text();
+      console.log("n8n webhook raw response:", responseText);
 
-      if (data.url) {
-        setProcessedImage(data.url);
+      let imageUrl: string | null = null;
+
+      try {
+        const data = JSON.parse(responseText);
+        console.log("Parsed response:", data);
+
+        // Handle various possible response formats from n8n
+        if (typeof data === "string") {
+          // Direct URL string
+          imageUrl = data;
+        } else if (Array.isArray(data)) {
+          // n8n sometimes returns an array: [{ url: "..." }]
+          const first = data[0];
+          imageUrl = first?.url || first?.secure_url || first?.image || first?.result || null;
+        } else if (typeof data === "object" && data !== null) {
+          // Object: { url: "..." } or { secure_url: "..." } or nested
+          imageUrl = data.url || data.secure_url || data.image || data.result || data.output || null;
+
+          // Check if it's nested: { data: { url: "..." } }
+          if (!imageUrl && data.data) {
+            const nested = typeof data.data === "string" ? data.data : (data.data.url || data.data.secure_url);
+            imageUrl = nested || null;
+          }
+        }
+      } catch {
+        // If response is not JSON, it might be a plain URL string
+        if (responseText.startsWith("http")) {
+          imageUrl = responseText.trim();
+        }
+      }
+
+      if (imageUrl) {
+        setProcessedImage(imageUrl);
 
         // Save to history & localStorage
         const newItem: HistoryItem = {
           id: crypto.randomUUID(),
           originalImage,
-          processedUrl: data.url,
+          processedUrl: imageUrl,
           fileName: file.name,
           timestamp: Date.now(),
         };
@@ -144,7 +176,7 @@ export default function Dashboard() {
           return updated;
         });
       } else {
-        throw new Error("No image URL received from the server.");
+        throw new Error(`Unexpected response format. Check browser console for details.`);
       }
     } catch (err) {
       console.error("Background removal failed:", err);
