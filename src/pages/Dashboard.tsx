@@ -111,13 +111,13 @@ export default function Dashboard() {
     setProcessedImage(null);
 
     try {
+      // Send as FormData with key "data" as expected by n8n webhook
+      const formData = new FormData();
+      formData.append("data", file);
+
       const response = await fetch(WEBHOOK_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": file.type,
-          "X-Filename": file.name,
-        },
-        body: file,
+        body: formData,
       });
 
       if (!response.ok) {
@@ -229,8 +229,8 @@ export default function Dashboard() {
             <button
               onClick={() => setActiveTab("editor")}
               className={`flex-1 flex items-center justify-center gap-2 rounded-lg py-2.5 px-4 text-sm font-semibold transition-all duration-200 ${activeTab === "editor"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
                 }`}
             >
               <Wand2 className="h-4 w-4" />
@@ -239,8 +239,8 @@ export default function Dashboard() {
             <button
               onClick={() => setActiveTab("history")}
               className={`flex-1 flex items-center justify-center gap-2 rounded-lg py-2.5 px-4 text-sm font-semibold transition-all duration-200 ${activeTab === "history"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
                 }`}
             >
               <Clock className="h-4 w-4" />
@@ -265,8 +265,8 @@ export default function Dashboard() {
               onDragLeave={() => setDragOver(false)}
               onDrop={onDrop}
               className={`rounded-3xl border-2 border-dashed p-8 transition-all duration-300 ${dragOver
-                  ? "border-primary bg-primary/5 shadow-lg scale-[1.01]"
-                  : "border-gray-200 bg-white shadow-card"
+                ? "border-primary bg-primary/5 shadow-lg scale-[1.01]"
+                : "border-gray-200 bg-white shadow-card"
                 }`}
             >
               {!originalImage ? (
@@ -323,10 +323,10 @@ export default function Dashboard() {
                     <h2 className="text-lg font-bold flex items-center gap-2">
                       <span
                         className={`w-2 h-2 rounded-full ${processing
-                            ? "bg-primary animate-pulse"
-                            : processedImage
-                              ? "bg-green-500"
-                              : "bg-gray-300"
+                          ? "bg-primary animate-pulse"
+                          : processedImage
+                            ? "bg-green-500"
+                            : "bg-gray-300"
                           }`}
                       />
                       Result
