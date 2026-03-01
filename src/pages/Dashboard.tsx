@@ -111,12 +111,10 @@ export default function Dashboard() {
     setProcessedImage(null);
 
     try {
-      // Send as raw binary — n8n webhook expects binary file data
+      // Send as raw binary with Content-Type — matches n8n webhook binary.data config
       const response = await fetch(WEBHOOK_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": file.type || "image/png",
-        },
+        headers: { "Content-Type": file.type || "image/png" },
         body: file,
       });
 
